@@ -1,5 +1,6 @@
 
 const showMore = document.querySelectorAll('.show-experience');
+const competence = document.querySelectorAll('.competence');
 
 window.addEventListener('DOMContentLoaded', () => {
     showMore.forEach(element => {
@@ -45,9 +46,24 @@ const cacherDetails = (experience) => {
             if (window.getComputedStyle(sousTitre).display === 'block' && window.getComputedStyle(description).display === 'block') {
                 sousTitre.style.display = 'none';
                 description.style.display = 'none';
-                
-                element.firstElementChild.className = 'fas fa-angle-down';
-            }
+        }
         }
     });
 }
+
+competence.forEach(element => {
+    element.addEventListener('mouseover', (e) => {
+        for (let i = 0; i < e.target.children.length; i++) {
+            if (e.target.children[i] && e.target.children[i].className === 'tooltip'){
+                e.target.children[i].style.display = 'block';
+            }
+        }
+    });
+
+    element.addEventListener('mouseout', (e) => {
+        for (let i = 0; i < e.target.children.length; i++) {
+            if (e.target.children[i] && e.target.children[i].className === 'tooltip')
+                e.target.children[i].style.display = 'none';
+        }
+    });
+});
